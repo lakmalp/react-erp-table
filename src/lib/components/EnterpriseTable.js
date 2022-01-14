@@ -501,8 +501,6 @@ const TableDataRow = ({ lineMenu, lineMenuActionHandler, data, columns, isLastRo
           lineMenuOpen &&
           <div className="z-100 absolute bg-white text-gray-800 border shadow-md min-w-max overflow-hidden " style={{ marginLeft: 30, marginTop: -28 }}>
             <ul ref={wrapperRef} className="">
-              {/* <li className="px-2 py-1 hover:bg-ss-100 hover:text-gray-900"><button className="w-full text-left flex"><IconAddAbove className="mr-2" width="15" color="rgb(59, 130, 246)" />Insert Above</button></li>
-              <li className="px-2 py-1 hover:bg-ss-100 hover:text-gray-900"><button className="w-full text-left flex"><IconAddBelow className="mr-2" width="15" color="rgb(59, 130, 246)" />Insert Below</button></li> */}
               <li className={"px-2 py-1 hover:bg-ss-100 hover:text-gray-900 " + (["md", "lg", "xl", "2xl", "3xl"].includes(viewPortBreakpoint) ? "hidden" : "block")}><button className="w-full text-left flex"><IconEdit className="mr-2" width="15" color="rgb(59, 130, 246)" /> Edit</button></li>
               <li className={"px-2 py-1 hover:bg-ss-100 hover:text-gray-900 " + (["md", "lg", "xl", "2xl", "3xl"].includes(viewPortBreakpoint) ? "hidden" : "block")}><button className="w-full text-left flex"><IconTrash className="mr-2" width="15" color="rgb(59, 130, 246)" /> Delete</button></li>
               <li><hr /></li>
