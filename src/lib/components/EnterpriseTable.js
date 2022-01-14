@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { IconFilter, IconFilterX, IconVDots, IconHamburger, IconSortAsc, IconSortDesc, IconMagnifyingGlass, IconEdit, IconTrash } from "./icons"
 import numeral from "numeral";
-import useOutsideAlerter from "./useOutsideAlerter";
+import useOutsideAlerter from "../hooks/useOutsideAlerter";
 
 const EnterpriseTable = (props) => {
   const [viewPortBreakpoint, setViewPortBreakpoint] = useState();
