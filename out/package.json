@@ -1,0 +1,25 @@
+{
+  "name": "react-erp-table",
+  "version": "1.0.6",
+  "private": false,
+  "description": "React ERP Table",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lakmalp/react-erp-table.git"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "enterprise",
+    "table"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/lakmalp/react-erp-table#readme",
+  "author": "Lakmal Premaratne"
+}

@@ -1,8 +1,8 @@
 {
-  "name": "react-enterprise-table",
-  "version": "1.0.0",
+  "name": "react-erp-table",
+  "version": "1.0.1",
   "private": false,
-  "description": "React Enterprise Table",
+  "description": "React ERP Table",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -11,7 +11,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lakmalp/react-enterprise-table.git"
+    "url": "git+https://github.com/lakmalp/react-erp-table.git"
   },
   "keywords": [
     "react",
@@ -20,7 +20,7 @@
     "table"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/lakmalp/react-enterprise-table#readme",
+  "homepage": "https://github.com/lakmalp/react-erp-table#readme",
   "author": "Lakmal Premaratne",
   "babel": {
     "presets": [
@@ -41,7 +41,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "publish:npm": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files",
+    "publish:build": "rm -rf out && mkdir out && cp npm-package.json out/package.json && cp README.md out/ && NODE_ENV=production babel src/lib --out-dir out/dist --copy-files",
+    "publish": "cd out && npm publish",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
