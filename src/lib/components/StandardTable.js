@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { IconFilter, IconFilterX, IconVDots, IconHamburger, IconSortAsc, IconSortDesc, IconMagnifyingGlass, IconEdit, IconTrash } from "./icons"
 import numeral from "numeral";
 import useOutsideAlerter from "../hooks/useOutsideAlerter";
