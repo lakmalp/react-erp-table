@@ -1,6 +1,6 @@
 {
   "name": "react-erp-table",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha.1.0.2",
   "private": false,
   "description": "React ERP Table",
   "main": "dist/index.js",

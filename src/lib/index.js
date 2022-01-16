@@ -1,3 +1,3 @@
-import EnterpriseTable from "./components/EnterpriseTable"
+import StandardTable from "./components/StandardTable"
 
-export { EnterpriseTable };
+export { StandardTable };

@@ -3,7 +3,7 @@ import { IconFilter, IconFilterX, IconVDots, IconHamburger, IconSortAsc, IconSor
 import numeral from "numeral";
 import useOutsideAlerter from "../hooks/useOutsideAlerter";
 
-const EnterpriseTable = (props) => {
+const StandardTable = (props) => {
   const [viewPortBreakpoint, setViewPortBreakpoint] = useState();
   const [containerWidth, setContainerWidth] = useState();
   const [filterOn, setFilterOn] = useState(false);
@@ -691,4 +691,4 @@ const ServerSumRow = ({ conf, columns, data, isFilterOn, viewPortBreakpoint }) =
   )
 }
 
-export default EnterpriseTable;
+export default StandardTable;
