@@ -243,7 +243,7 @@ const StandardTable = (props) => {
       return { ...acc, [btn.action]: _ret }
     }, {})
     setSideBarButtonsEnabled(_enabled_sidebar_buttons)
-  }, [selectedLines])
+  }, [selectedLines, ...props.buttonEnablers])
 
   const [showAdvSearch, setShowAdvSearch] = useState(false);
   const [searchParams, setSearchParams] = useState({});
@@ -319,6 +319,7 @@ const StandardTable = (props) => {
                     </div>
                   }
                 </div>
+                {
                 <div className="relative flex items-center h-7">
                   <span className="mr-2 text-xs text-black font-semibold h-full flex items-center font-montserrat">Search</span>
                   <input id="main" value={searchParams.main} onChange={e => onSearchParamsChange(e)} type="text" className="pl-1 pr-16 font-inter h-full w-60 border shadow-innera roundeda overflow-hidden outline-none" disabled={showAdvSearch} />
@@ -358,6 +359,7 @@ const StandardTable = (props) => {
                     </div>
                   }
                 </div>
+                }
               </div>
             </td>
           </tr>
