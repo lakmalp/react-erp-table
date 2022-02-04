@@ -46,7 +46,7 @@ const StandardTable = (props) => {
     }
     let sort_dir = sortProperties[sort_col];
     let first_val, second_val = "";
-    let col_config = props.columns.filter(col => col.name === sort_col)[0];
+    let col_config = props.configuration.columns.filter(col => col.name === sort_col)[0];
 
     const _extractConcatenatedString = (row) => {
       return Object.entries(row).reduce((acc, curr) => {
@@ -126,7 +126,7 @@ const StandardTable = (props) => {
   useEffect(() => {
     if (tableData) {
       if ((filterValues) && (Object.keys(filterValues).length > 0)) {
-        var column_types = props.columns.reduce((acc, curr) => {
+        var column_types = props.configuration.columns.reduce((acc, curr) => {
           return { ...acc, [curr.name]: curr.type }
         }, {})
         setFilteredData(
@@ -139,7 +139,7 @@ const StandardTable = (props) => {
                 switch (column_types[key]) {
                   case 'object':
                     match_results = Object.entries(value).reduce((acc, curr) => {
-                      if (props.columns.filter(item => item.name === key)[0].select.includes(curr[0])) {
+                      if (props.configuration.columns.filter(item => item.name === key)[0].select.includes(curr[0])) {
                         return acc + curr[1]
                       }
                       return acc
@@ -185,7 +185,7 @@ const StandardTable = (props) => {
         setFilteredData(getSortedTableData(tableData))
       }
     }
-  }, [filterValues, tableData, props.columns])
+  }, [filterValues, tableData, props.configuration.columns])
 
   const handleWindowResize = () => {
     let vw = props.containerRef.current.offsetWidth;
@@ -243,14 +243,14 @@ const StandardTable = (props) => {
       return { ...acc, [btn.action]: _ret }
     }, {})
     setSideBarButtonsEnabled(_enabled_sidebar_buttons)
-  }, [selectedLines, ...props.buttonEnablers])
+  }, [selectedLines, props.disabled])
 
   const [showAdvSearch, setShowAdvSearch] = useState(false);
   const [searchParams, setSearchParams] = useState({});
 
   const search = () => {
     setShowAdvSearch(false)
-    props.search(searchParams);
+    props.doSearch(searchParams);
   }
 
   const onSearchParamsChange = (e) => {
@@ -339,7 +339,7 @@ const StandardTable = (props) => {
                     <div className="z-50 top-8 w-full absolute font-inter text-xs bg-ss-50 border shadow">
                       <div className="p-2">
                         {
-                          props.columns
+                          props.configuration.columns
                             .filter(item => {
                               return (item.visible[viewPortBreakpoint] && item.name !== "_seq_")
                             })
@@ -383,7 +383,7 @@ const StandardTable = (props) => {
                       >
 
                         <button
-                          onClick={() => props.sideBarActionHandler(tableData, setTableData, selectedLines, btn.action)}
+                          onClick={() => props.sideBarActionHandler(tableData, setTableData, selectedLines, setSelectedLines, btn.action)}
                           className={
                             " flex items-center justify-center h-9 w-9 " +
                             props.style.baseStyle.sideBarButton[(sideBarButtonsEnabled[btn.action] ? "enabled" : "disabled")] + " " +
@@ -399,7 +399,7 @@ const StandardTable = (props) => {
                 })
               }
               {
-                !props.conf.addSystemButtonsToSideBar &&
+                !props.configuration.general.addSystemButtonsToSideBar &&
                 <tr><td><div style={{ width: 37 }}></div></td></tr>
               }
             </tbody>
@@ -412,7 +412,7 @@ const StandardTable = (props) => {
             <thead>
               <TableHeaderRow
                 containerWidth={containerWidth}
-                columns={props.columns}
+                columns={props.configuration.columns}
                 toggleAllLines={toggleAllLines}
                 filterOn={filterOn}
                 toggleFilter={toggleFilter}
@@ -444,19 +444,19 @@ const StandardTable = (props) => {
                     key={row_index}
                     isLastRow={(row_index === filteredData.length - 1)}
                     data={row}
-                    columns={props.columns}
+                    columns={props.configuration.columns}
                     lineMenuInquireHandler={props.lineMenuInquireHandler}
                     viewPortBreakpoint={viewPortBreakpoint}
                   />
                 )
               }
               {
-                (props.conf.showFilterSum) && filteredData &&
-                <FilterSumRow conf={props.conf} columns={props.columns} data={filteredData} isFilterOn={filterOn} viewPortBreakpoint={viewPortBreakpoint} />
+                (props.configuration.general.showFilterSum) && filteredData &&
+                <FilterSumRow conf={props.configuration.general} columns={props.configuration.columns} data={filteredData} isFilterOn={filterOn} viewPortBreakpoint={viewPortBreakpoint} />
               }
               {
-                (props.conf.showGrandSum) && tableData &&
-                <ServerSumRow conf={props.conf} columns={props.columns} data={tableData} isFilterOn={filterOn} viewPortBreakpoint={viewPortBreakpoint} />
+                (props.configuration.general.showGrandSum) && tableData &&
+                <ServerSumRow conf={props.configuration.general} columns={props.configuration.columns} data={tableData} isFilterOn={filterOn} viewPortBreakpoint={viewPortBreakpoint} />
               }
             </tbody>
           </table>
