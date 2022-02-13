@@ -548,9 +548,9 @@ const TableDataRow = ({ lineMenu, lineMenuActionHandler, data, columns, isLastRo
           return (
             <td
               key={col_index}
-              className={`
-                px-2 font-roboto text-xs text-${column.align} ` +
-                (isLastRow ? "border-b" : "border-b") +
+              className={
+                `px-2 font-roboto text-xs text-${column.align} ` +
+                (isLastRow ? " border-b " : " border-b ") +
                 (((visible_columns.length) === (col_index + 1)) ? " border-r " : "")}
             >
               {value}
