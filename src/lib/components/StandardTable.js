@@ -292,7 +292,7 @@ const StandardTable = (props) => {
                   }
                 </div>
                 <div className={"relative " + (["md", "lg", "xl", "2xl", "3xl"].includes(viewPortBreakpoint) ? "hidden" : "block")}>
-                  <button className="w-9 h-9 rounded-full bg-ss-200a" onClick={() => setHamburgerMenuOpen(prev => !prev)}><Icon icon="Hamburger" className="mx-auto" color="gray" width="20" /></button>
+                  <button className="w-9 h-9 rounded-full " onClick={() => setHamburgerMenuOpen(prev => !prev)}><Icon icon="Hamburger" className="mx-auto" color="gray" width="20" /></button>
                   {
                     hamburgerMenuOpen &&
                     <div className="z-100 absolute bg-white text-gray-800 border shadow-md min-w-max overflow-hidden " style={{ marginLeft: 30, marginTop: -28 }}>
@@ -300,7 +300,7 @@ const StandardTable = (props) => {
                         {
                           props.commandBarButtons.map((btn, i) => {
                             return (
-                              <li key={i} className={"px-2 py-1 " + (commandBarButtonsEnabled[btn.action] ? "hover:bg-ss-100" : "")}>
+                              <li key={i} className={"px-2 py-1 " + (commandBarButtonsEnabled[btn.action] ? "hover:bg-gray-100" : "")}>
                                 <button
                                   key={`${btn.action}-${i}`}
                                   onClick={() => props.commandBarActionHandler(filteredData, setFilteredData, selectedLines, btn.action)}
@@ -322,21 +322,21 @@ const StandardTable = (props) => {
                 {
                 <div className="relative flex items-center h-7">
                   <span className="mr-2 text-xs text-black font-semibold h-full flex items-center font-montserrat">Search</span>
-                  <input id="main" value={searchParams.main} onChange={e => onSearchParamsChange(e)} type="text" className="pl-1 pr-16 font-inter h-full w-60 border shadow-innera roundeda overflow-hidden outline-none" disabled={showAdvSearch} />
+                  <input id="main" value={searchParams.main} onChange={e => onSearchParamsChange(e)} type="text" className="pl-1 pr-16 font-inter h-full w-60 border overflow-hidden outline-none" disabled={showAdvSearch} />
                   <div className="absolute h-full flex items-center justify-center" style={{ right: 0 }}>
                     {
                       !showAdvSearch &&
-                      <button onClick={() => search(searchParams)} className="h-7 w-7 text-ss-900 border-l border-t border-b bg-white flex justify-center items-center">
+                      <button onClick={() => search(searchParams)} className="h-7 w-7 text-gray-900 border-l border-t border-b bg-white flex justify-center items-center">
                           <Icon icon="MagnifyingGlass" color="rgb(70, 70, 70)" width="15" />
                       </button>
                     }
-                    <button onClick={() => setShowAdvSearch(prev => !prev)} className=" h-7 w-7 border border-whitea rounded-ra bg-white flex justify-center items-center">
+                    <button onClick={() => setShowAdvSearch(prev => !prev)} className=" h-7 w-7 border bg-white flex justify-center items-center">
                       <Icon icon="VDots" color="rgb(40, 41, 41)" width="15" />
                     </button>
                   </div>
                   {
                     showAdvSearch &&
-                    <div className="z-50 top-8 w-full absolute font-inter text-xs bg-ss-50 border shadow">
+                    <div className="z-50 top-8 w-full absolute font-inter text-xs bg-gray-50 border shadow">
                       <div className="p-2">
                         {
                           props.configuration.columns
@@ -353,8 +353,8 @@ const StandardTable = (props) => {
                             })
                         }
                       </div>
-                      <div className="mt-2 py-1 px-2 flex justify-end bg-ss-100">
-                        <button onClick={() => search(searchParams)} className="border roundeda bg-gradient-to-b from-white to-ss-100 text-xs px-2 py-1">Search</button>
+                      <div className="mt-2 py-1 px-2 flex justify-end bg-gray-100">
+                        <button onClick={() => search(searchParams)} className="border bg-gradient-to-b from-white to-gray-100 text-xs px-2 py-1">Search</button>
                       </div>
                     </div>
                   }
@@ -376,7 +376,7 @@ const StandardTable = (props) => {
                     <tr key={`${btn.action}-${i}`} className="h-9">
                       <td
                         className={
-                          " border border-transparent w-9a " +
+                          " border border-transparent " +
                           props.style.baseStyle.sideBarButton[(sideBarButtonsEnabled[btn.action] ? "enabled" : "disabled")] + " " +
                           props.style[props.theme].sideBarButton[(sideBarButtonsEnabled[btn.action] ? "enabled" : "disabled")]
                         }
@@ -464,7 +464,7 @@ const StandardTable = (props) => {
       </div>
       {
         (Object.keys(filteredData).length > 0) &&
-        <div className="float-right mt-3"><Paginator /></div>
+        <div className="flex justify-end mt-3"><Paginator /></div>
       }
     </div>
   )
@@ -490,8 +490,8 @@ const TableDataRow = ({ lineMenu, lineMenuActionHandler, data, columns, isLastRo
     return data[param];
   }
   return (
-    <tr className={"h-9 transition-colors duration-500 hover:bg-ss-100 hover:shadow-md " + ((rowSelected || lineMenuOpen) ? "bg-ss-100" : "")}>
-      <td className={"text-xs border-l border-r bg-ss-100 " + (isLastRow ? " border-b " : " border-b ")}>
+    <tr className={"h-9 transition-colors duration-500 hover:bg-gray-100 hover:shadow-md " + ((rowSelected || lineMenuOpen) ? "bg-gray-100" : "")}>
+      <td className={"text-xs border-l border-r bg-gray-100 " + (isLastRow ? " border-b " : " border-b ")}>
         <button className="h-9 w-9 flex justify-center items-center transition-colors " onClick={() => setLineMenuOpen(prev => !prev)}>
           <Icon icon="VDots" className="" color="gray" width="15" />
         </button>
@@ -499,12 +499,12 @@ const TableDataRow = ({ lineMenu, lineMenuActionHandler, data, columns, isLastRo
           lineMenuOpen &&
           <div className="z-100 absolute bg-white text-gray-800 border shadow-md min-w-max overflow-hidden " style={{ marginLeft: 30, marginTop: -28 }}>
             <ul ref={wrapperRef} className="">
-              <li className={"px-2 py-1 hover:bg-ss-100 hover:text-gray-900 " + (["md", "lg", "xl", "2xl", "3xl"].includes(viewPortBreakpoint) ? "hidden" : "block")}><button className="w-full text-left flex"><Icon icon="Edit" className="mr-2" width="15" color="rgb(59, 130, 246)" /> Edit</button></li>
-              <li className={"px-2 py-1 hover:bg-ss-100 hover:text-gray-900 " + (["md", "lg", "xl", "2xl", "3xl"].includes(viewPortBreakpoint) ? "hidden" : "block")}><button className="w-full text-left flex"><Icon icon="Trash" className="mr-2" width="15" color="rgb(59, 130, 246)" /> Delete</button></li>
+              <li className={"px-2 py-1 hover:bg-gray-100 hover:text-gray-900 " + (["md", "lg", "xl", "2xl", "3xl"].includes(viewPortBreakpoint) ? "hidden" : "block")}><button className="w-full text-left flex"><Icon icon="Edit" className="mr-2" width="15" color="rgb(59, 130, 246)" /> Edit</button></li>
+              <li className={"px-2 py-1 hover:bg-gray-100 hover:text-gray-900 " + (["md", "lg", "xl", "2xl", "3xl"].includes(viewPortBreakpoint) ? "hidden" : "block")}><button className="w-full text-left flex"><Icon icon="Trash" className="mr-2" width="15" color="rgb(59, 130, 246)" /> Delete</button></li>
               <li><hr /></li>
               {
                 lineMenu.map(item =>
-                  <li key={item.action} className={"px-2 py-1 " + (lineMenuInquireHandler(item.action, data.id) ? "hover:bg-ss-100" : "")}>
+                  <li key={item.action} className={"px-2 py-1 " + (lineMenuInquireHandler(item.action, data.id) ? "hover:bg-gray-100" : "")}>
                     <button
                       className={"text-left " + (lineMenuInquireHandler(item.action, data.id) ? "text-gray-700 hover:text-gray-900" : "text-gray-300 cursor-default")}
                       onClick={() => {
@@ -582,9 +582,9 @@ const TableHeaderRow = ({ containerWidth, columns, toggleAllLines, filterOn, tog
   }, [containerWidth, columns])
 
   return (
-    <tr className={filterOn ? "h-14 bg-ss-200" : "h-9"}>
+    <tr className={filterOn ? "h-14 bg-gray-200" : "h-9"}>
       <td className={"border-b text-center " + (filterOn ? " border-l border-t" : "")} style={{ minWidth: ellipsis_width, width: ellipsis_width }}>
-        <button className={`rounded-fulla transition-colors hover:bg-${(filterOn ? "gray-100a" : "gray-200a")} h-7a w-7a`} onClick={() => toggleFilter(prev => !prev)}>
+        <button className={`transition-colors`} onClick={() => toggleFilter(prev => !prev)}>
           <Icon icon="Filter" className={(filterOn ? "hidden" : "")} color="rgb(37, 99, 235)" width="18" />
           <Icon icon="FilterX" className={(filterOn ? "" : "hidden")} color="rgb(37, 99, 235)" width="18" />
         </button>
@@ -610,9 +610,9 @@ const TableHeaderRow = ({ containerWidth, columns, toggleAllLines, filterOn, tog
                 justification = "center";
                 break;
             }
-            return <td key={col_index} className={((Object.keys(sortProperties)[0] === column.name ? (sortProperties[column.name] === "asc" ? "abg-gradient-to-b" : "abg-gradient-to-t") : "")) + ` from-transparent to-ss-200 border-b text-center px-2 ` + (filterOn ? (visible_columns.length === col_index + 1 ? "border-r  border-t" : " border-t") : "")} style={{ minWidth: column.length, width: (columnWidthFactor * column.length) }}>
+            return <td key={col_index} className={`from-transparent to-gray-200 border-b text-center px-2 ` + (filterOn ? (visible_columns.length === col_index + 1 ? "border-r  border-t" : " border-t") : "")} style={{ minWidth: column.length, width: (columnWidthFactor * column.length) }}>
               <div className={` flex justify-${justification}`}>
-                <button className={`flex items-center  font-montserrat text-xs font-semibold text-blue-600 hover:text-blue-700 `} onClick={() => setSortProperties(column.name)}>
+                <button className={`flex items-center font-montserrat text-xs font-semibold text-blue-600 hover:text-blue-700 `} onClick={() => setSortProperties(column.name)}>
                   {column.label}
                   <Icon icon="SortAsc" className={"ml-2 " + (sortProperties[column.name] === "" ? "hidden" : (sortProperties[column.name] === "asc" ? "" : "hidden"))} width="10" />
                   <Icon icon="SortDesc" className={"ml-2 " + (sortProperties[column.name] === "" ? "hidden" : (sortProperties[column.name] === "desc" ? "" : "hidden"))} width="10" />
@@ -642,7 +642,7 @@ const FilterSumRow = ({ conf, columns, data, isFilterOn, viewPortBreakpoint }) =
 
   return (
     <tr className={"h-9 border-t font-roboto font-semibold text-xs " + (isFilterOn ? "" : "hidden")}>
-      <td className="px-2 text-xla" colSpan="3">Filter Totals</td>
+      <td className="px-2" colSpan="3">Filter Totals</td>
       {
         columns
           .filter(item => item.visible[viewPortBreakpoint])
